@@ -1,0 +1,20 @@
+pipeline {
+    parameters {
+        string(
+            name: 'GIT_SHA',
+            description: 'GIT SHA to Deploy'
+        )
+    }
+
+    environment {
+        SHA = "${params.GIT_SHA}"
+    }
+
+    stages {
+        stage('validate') {
+            steps {
+                echo $SHA
+            }
+        }
+    }
+}
