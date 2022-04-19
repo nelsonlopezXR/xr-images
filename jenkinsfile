@@ -15,7 +15,9 @@ pipeline {
     stages {
         stage('validate') {
             steps {
-                echo $SHA
+                script {
+                    echo ${SHA}
+                }
             }
         }
     }
