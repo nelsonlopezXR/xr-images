@@ -2,7 +2,8 @@ pipeline {
     parameters {
         string(
             name: 'GIT_SHA',
-            description: 'GIT SHA to Deploy'
+            description: 'GIT SHA to Deploy',
+            trim: true
         )
     }
 
