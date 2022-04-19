@@ -6,6 +6,8 @@ pipeline {
         )
     }
 
+    agent any
+
     environment {
         SHA = "${params.GIT_SHA}"
     }
