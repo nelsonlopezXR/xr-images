@@ -7,7 +7,12 @@ pipeline {
         )
     }
 
-    agent any
+    agent {
+      kubernetes {
+        cloud "kubernetes"
+        yamlFile 'worker.yaml'
+      }
+    }
 
     environment {
         SHA = "${params.GIT_SHA}"
