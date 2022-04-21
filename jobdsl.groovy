@@ -1,10 +1,10 @@
-job('demo') {
+job('demo-v3') {
     steps {
         shell('echo Hello World!')
     }
 }
 
-pipelineJob('github-demo') {
+pipelineJob('github-demo-v3') {
     definition {
         cpsScm {
             scm {
