@@ -3,7 +3,7 @@ kind: Pod
 spec:
   containers:
   - name: jnlp
-    image: docker.artifactory.internal.amount.com/jenkins-jnlp-agent:latest
+    image: jenkins/inbound-agent:4.7-1
     tty: true
     #volumeMounts:
     #- mountPath: /var/run/secrets/tokens
