@@ -18,3 +18,21 @@ pipelineJob('github-demo-v3') {
         }
     }
 }
+
+folder('folder-test') {
+    description('Folder containing all jobs for folder-a')
+}
+pipelineJob('folder-test/github-demo-v3') {
+    definition {
+        cpsScm {
+            scm {
+                git {
+                    remote {
+                        github('jenkinsci/pipeline-examples')
+                    }
+                }
+            }
+            scriptPath('declarative-examples/simple-examples/environmentInStage.groovy')
+        }
+    }
+}
