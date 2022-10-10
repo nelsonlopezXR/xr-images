@@ -1,5 +1,5 @@
 pipeline {
-    agent {label 'jenkinsslave'}
+    agent {label 'ecs'}
     
     stages {
         stage('Clone repository') {
