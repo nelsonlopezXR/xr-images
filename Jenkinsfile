@@ -9,6 +9,14 @@ pipeline {
                 checkout scm
             }
         }
+
+        stage('Building image') {
+          steps{
+            script {
+              dockerImage = docker.build nelsonlopezam/helloworld:poc
+            }
+          }
+        }
     }
 }
 /*
