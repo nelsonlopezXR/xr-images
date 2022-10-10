@@ -13,7 +13,7 @@ pipeline {
         stage('Building image') {
           steps{
             script {
-              dockerImage = docker.build nelsonlopezam/helloworld:poc
+              dockerImage = docker.build "nelsonlopezam/helloworld:poc"
             }
           }
         }
