@@ -9,7 +9,15 @@ pipeline {
                 checkout scm
             }
         }
-
+        stage('list files') {
+            steps {
+                script {
+                    sh "pwd"
+                    sh "ls -l Dockerfile hello"
+                }
+            }
+        }
+/*
         stage('Building image') {
           steps{
             script {
@@ -17,6 +25,7 @@ pipeline {
             }
           }
         }
+        */
     }
 }
 /*
