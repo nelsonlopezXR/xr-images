@@ -9,22 +9,21 @@ pipeline {
                 checkout scm
             }
         }
-        /*
+        
         stage('list files') {
             steps {
                 script {
                     sh "pwd"
                     sh "ls -l Dockerfile hello"
-                    sh "tar -czvf hello.tar.gz Dockerfile hello"
-                    sh "ls -l hello.tar.gz"
+                    /*sh "tar -czvf hello.tar.gz Dockerfile hello"
+                    sh "ls -l hello.tar.gz"*/
                 }
             }
         }
-*/
         stage('Building image') {
           steps{
             script {
-              sh "/kaniko/executor --dockerfile=Dockerfile --context=dir:///workspace --verbosity debug --insecure --skip-tls-verify --force --destination=nelsonlopezam/kaniko-hello:1"
+              sh "/kaniko/executor --dockerfile=Dockerfile --context=dir:///home/jenkins/workspace/build-job --verbosity debug --insecure --skip-tls-verify --force --destination=nelsonlopezam/kaniko-hello:1"
             }
           }
         }
