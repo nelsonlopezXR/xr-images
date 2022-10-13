@@ -24,7 +24,6 @@ pipeline {
         stage('Building image') {
           steps{
             script {
-              dockerImage = docker.build "nelsonlopezam/helloworld:poc"
               sh "/kaniko/executor --dockerfile=/home/Dockerfile --verbosity debug --insecure --skip-tls-verify --force --destination=nelsonlopezam/kaniko-hello:1"
             }
           }
