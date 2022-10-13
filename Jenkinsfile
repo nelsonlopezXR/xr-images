@@ -9,25 +9,26 @@ pipeline {
                 checkout scm
             }
         }
+        /*
         stage('list files') {
             steps {
                 script {
                     sh "pwd"
                     sh "ls -l Dockerfile hello"
-                    sh "tar -czvf hello.tar.gz ."
+                    sh "tar -czvf hello.tar.gz Dockerfile hello"
                     sh "ls -l hello.tar.gz"
                 }
             }
         }
-/*
+*/
         stage('Building image') {
           steps{
             script {
               dockerImage = docker.build "nelsonlopezam/helloworld:poc"
+              sh "/kaniko/executor --dockerfile=/home/Dockerfile --verbosity debug --insecure --skip-tls-verify --force --destination=nelsonlopezam/kaniko-hello:1"
             }
           }
         }
-        */
     }
 }
 /*
