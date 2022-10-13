@@ -23,7 +23,7 @@ pipeline {
         stage('Building image') {
           steps{
             script {
-              sh "/kaniko/executor --dockerfile=Dockerfile --context=dir:///home/jenkins/workspace/build-job/frontend-app --verbosity debug --insecure --skip-tls-verify --force --destination=nelsonlopezam/frontend-app:2"
+              sh "/kaniko/executor --dockerfile=./frontend-app/Dockerfile --context=dir:///home/jenkins/workspace/build-job/frontend-app --verbosity debug --insecure --skip-tls-verify --force --destination=nelsonlopezam/frontend-app:2"
             }
           }
         }
