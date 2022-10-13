@@ -14,7 +14,7 @@ pipeline {
             steps {
                 script {
                     sh "pwd"
-                    sh "ls -l Dockerfile hello"
+                    sh "ls -l frontend-app"
                     /*sh "tar -czvf hello.tar.gz Dockerfile hello"
                     sh "ls -l hello.tar.gz"*/
                 }
@@ -23,7 +23,7 @@ pipeline {
         stage('Building image') {
           steps{
             script {
-              sh "/kaniko/executor --dockerfile=Dockerfile --context=dir:///home/jenkins/workspace/build-job --verbosity debug --insecure --skip-tls-verify --force --destination=nelsonlopezam/kaniko-hello:1"
+              sh "/kaniko/executor --dockerfile=Dockerfile --context=dir:///home/jenkins/workspace/build-job/frontend-app --verbosity debug --insecure --skip-tls-verify --force --destination=nelsonlopezam/frontend-app:2"
             }
           }
         }
