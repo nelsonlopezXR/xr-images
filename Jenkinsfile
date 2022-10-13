@@ -14,6 +14,8 @@ pipeline {
                 script {
                     sh "pwd"
                     sh "ls -l Dockerfile hello"
+                    sh "tar -czvf hello.tar.gz ."
+                    sh "ls -l hello.tar.gz"
                 }
             }
         }
