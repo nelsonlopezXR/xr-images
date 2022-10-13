@@ -24,7 +24,7 @@ pipeline {
         stage('Building image') {
           steps{
             script {
-              sh "/kaniko/executor --dockerfile=Dockerfile --verbosity debug --insecure --skip-tls-verify --force --destination=nelsonlopezam/kaniko-hello:1"
+              sh "/kaniko/executor --dockerfile=Dockerfile --context=dir:///workspace --verbosity debug --insecure --skip-tls-verify --force --destination=nelsonlopezam/kaniko-hello:1"
             }
           }
         }
