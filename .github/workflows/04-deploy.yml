@@ -5,7 +5,7 @@ on:
     paths:
       - .container-env/conf/**.env
     branches:
-      - 'main'
+      - main
 
 jobs:
   check-envvars-files:
@@ -18,14 +18,30 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
 
-      - name: Get changed files
-        id: changed-files
-        uses: tj-actions/changed-files@v35.5.0
+      - uses: dorny/paths-filter@v2
+        id: filter
         with:
-          path: .container-env/conf
-          
-      - name: List all added files
+          base: ${{ github.ref }}
+          filters: |
+            tmp:
+              - added|modified: '.container-env/conf/website-tmp1.env'
+            dev:
+              - added|modified: '.container-env/conf/website-dev.env'
+            uat:
+              - added|modified: '.container-env/conf/website-uat.env'
+
+      - name: tests tmp
+        if: steps.filter.outputs.tmp == 'true'
         run: |
-          for file in ${{ steps.changed-files.outputs.all_changed_and_modified_files }}; do
-            echo "$file was added"
-          done
+           echo "It has changed run sub workflow for tmp"
+      
+      - name: tests dev
+        if: steps.filter.outputs.dev == 'true'
+        run: |
+           echo "It has changed run sub workflow for dev"
+
+      - name: tests uat
+        if: steps.filter.outputs.uat == 'true'
+        run: |
+           echo "It has changed run sub workflow for uat"
+           
