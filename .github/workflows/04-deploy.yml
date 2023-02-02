@@ -25,9 +25,23 @@ jobs:
           filters: |
             tmp:
               - added|modified: '.container-env/conf/website-tmp1.env'
+            dev:
+              - added|modified: '.container-env/conf/website-dev.env'
+            uat:
+              - added|modified: '.container-env/conf/website-uat.env'
 
-      - name: backend tests
+      - name: tests tmp
         if: steps.filter.outputs.tmp == 'true'
         run: |
-           echo "It has changed run sub workflow"
+           echo "It has changed run sub workflow for tmp"
+      
+      - name: tests dev
+        if: steps.filter.outputs.dev == 'true'
+        run: |
+           echo "It has changed run sub workflow for dev"
+
+      - name: tests uat
+        if: steps.filter.outputs.uat == 'true'
+        run: |
+           echo "It has changed run sub workflow for uat"
            
