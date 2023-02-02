@@ -5,7 +5,7 @@ on:
     paths:
       - .container-env/conf/**.env
     branches:
-      - 'test-workflow'
+      - main
 
 jobs:
   check-envvars-files:
